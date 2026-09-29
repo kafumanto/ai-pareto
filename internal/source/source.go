@@ -5,6 +5,7 @@ import (
 	"context"
 	"net/http"
 
+	"github.com/kafumanto/ai-pareto/internal/cache"
 	"github.com/kafumanto/ai-pareto/internal/domain"
 )
 
@@ -32,11 +33,13 @@ type HTTPDoer interface {
 // SourceRequest contains request-scoped services and optional credentials for a source.
 //
 // The value is supplied to a source constructor for one application request.
-// The registry does not retain the value, and future shared cache dependencies
-// can be added here without changing the constructor function shape.
+// The registry does not retain the value or any dependency stored in it.
 type SourceRequest struct {
 	// HTTP executes remote requests for the source; nil is allowed for non-remote sources.
 	HTTP HTTPDoer
+	// Cache performs shared cache-aware GETs for the source. The retriever owns key derivation,
+	// freshness, refresh behavior, and Store access; nil is allowed for non-remote sources.
+	Cache cache.Retriever
 	// Credential contains request-scoped credential bytes and is optional.
 	Credential []byte
 }

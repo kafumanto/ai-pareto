@@ -42,7 +42,7 @@ QUICK_PROFILE=quick
 EXPECTED_MODULE=github.com/kafumanto/ai-pareto
 EXPECTED_GO_VERSION=1.27
 # Keep package paths relative so the same list can drive expected-package checks and package-specific checks.
-PACKAGE_PATHS='./internal/domain ./internal/optimize ./internal/source'
+PACKAGE_PATHS='./internal/cache ./internal/domain ./internal/optimize ./internal/source'
 QUICK_TARGETS='linux/amd64'
 FULL_TARGETS='linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64 windows/arm64'
 
