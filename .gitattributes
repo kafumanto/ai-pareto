@@ -1,0 +1,2 @@
+# Keep repository text files in LF form so formatter checks stay consistent across Git clients.
+* text=auto eol=lf
